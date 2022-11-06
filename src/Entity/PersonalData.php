@@ -32,9 +32,6 @@ class PersonalData
     #[ORM\Column(length: 255)]
     private ?string $TaxCode = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $CreationDate = null;
-
     #[ORM\Column]
     private ?int $DisadvantageFlag = null;
 
@@ -117,18 +114,6 @@ class PersonalData
     public function setTaxCode(string $TaxCode): self
     {
         $this->TaxCode = $TaxCode;
-
-        return $this;
-    }
-
-    public function getCreationDate(): ?\DateTimeInterface
-    {
-        return $this->CreationDate;
-    }
-
-    public function setCreationDate(\DateTimeInterface $CreationDate): self
-    {
-        $this->CreationDate = $CreationDate;
 
         return $this;
     }
