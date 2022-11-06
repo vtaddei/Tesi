@@ -1,0 +1,52 @@
+
+#lista {
+    border: 3px solid blue;
+    border-radius: 10px;
+
+}
+tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+tr, td, th {
+    padding: 15px;
+}
+
+tr:hover {
+    background-color: skyblue;
+    color: blue;
+}
+
+th {
+    color: blue;
+}
+
+#divtableindex {
+    padding-left: 32%;
+}
+
+#titoloindex {
+    position: relative;
+    text-align: center;
+    background-color: skyblue;
+    padding: 10px 10px;
+    border-radius: 20px;
+    color: blue;
+    display: inline-block
+}
+
+#divtitoloindex {
+    padding-left: 39%;
+}
+
+
+h3{
+    background-color: skyblue;
+    border: none;
+    color: blue;
+    padding: 2px 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    font-family: Arial;
+}
