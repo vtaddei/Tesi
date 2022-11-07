@@ -19,7 +19,6 @@ class PersonalDataController extends \Symfony\Bundle\FrameworkBundle\Controller\
     #[Route('/', name: 'HomePage')]
     public function index(): Response
     {
-        $People = $this->personalDataRepository->findAll();
         return $this->render('HomePage.html.twig');
     }
 
@@ -33,22 +32,17 @@ class PersonalDataController extends \Symfony\Bundle\FrameworkBundle\Controller\
     }
 
     #[Route("/utenti/crea", name: 'salva_persona_fisica', methods: 'POST')]
-    public function save(Request $request,  PersonalData $pd = null) : Response  #mettiamo MamagerRegistry solo se ci serve il persistent al flush
+    public function save(Request $request,  PersonalData $pd = null) : Response
     {
         if ($pd == null) {
             $pd = new PersonalData();
         }
-        $form = $this->createForm(PersonalDataTypes::class, $pd); #ridichiariamo il form perchè non è globale //
-        $form->handleRequest($request);     #prende i dati dalla request
-
-        if ($form->isValid() && $form->isSubmitted()) {    #verifichiamo se sono gli stessi valori del form e se è stato submittato (oltretutto andrebbero rimessi i controlli poichè in frontend si eludono facilmente)
-            #$pf = $form->getData();   #non necessariamente lo stesso pf di riga 45 // ma getData si usa per duplicare
-            $this->personalDataRepository->save($pd, true); #flush libera il buffer scrivendo / false stoppa la query che rimane in memoria, per sbloccarlo guarda le righe dopo, altrimenti metti true e funziona subito
-
+        $form = $this->createForm(PersonalDataTypes::class, $pd);
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted()) {
+            $this->personalDataRepository->save($pd, true);
         }
-
-        #$doctrine->GetManager()->flush();
-        return $this->redirectToRoute('HomePage');
+        return $this->redirectToRoute('CreaUtente');
     }
 
 
