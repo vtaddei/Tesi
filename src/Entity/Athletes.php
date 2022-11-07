@@ -28,8 +28,6 @@ class Athletes implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $CreationDate = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $TelephoneNumber = null;
@@ -110,18 +108,6 @@ class Athletes implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getCreationDate(): ?\DateTimeInterface
-    {
-        return $this->CreationDate;
-    }
-
-    public function setCreationDate(\DateTimeInterface $CreationDate): self
-    {
-        $this->CreationDate = $CreationDate;
-
-        return $this;
     }
 
     public function getTelephoneNumber(): ?int
