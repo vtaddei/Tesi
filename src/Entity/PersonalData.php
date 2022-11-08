@@ -43,8 +43,8 @@ class PersonalData
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?EntryFee $Fk_EntryFee = null;
 
-    #[ORM\OneToMany(mappedBy: 'personaFisica', targetEntity: Athletes::class, cascade:["persist"], orphanRemoval: true)]
-    private $athletes;
+    #[ORM\OneToMany(mappedBy: 'PersonalData', targetEntity: Athletes::class, cascade:["persist"], orphanRemoval: true)]
+    private ?ArrayCollection $athletes;
 
     public function __construct()
     {

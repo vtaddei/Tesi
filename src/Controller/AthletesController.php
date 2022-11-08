@@ -7,6 +7,7 @@ use App\Form\AthletesFormType;
 use App\Repository\AthletesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,7 +27,6 @@ class AthletesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abst
                     $form->get('password')->getData()
                 )
             );
-
             $entityManager->persist($usr);
             $entityManager->flush();
             return $this->redirectToRoute('HomePage');
@@ -37,6 +37,10 @@ class AthletesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abst
         ]);
     }
 
-
+    #[Route('/dashboard', name: 'DashBoard')]
+    public function ShowDash(): Response
+    {
+        return $this->render('DashBoard.html.twig');
+    }
 
 }
