@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\PersonalDataRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: PersonalDataRepository::class)]
 class PersonalData
@@ -40,6 +42,14 @@ class PersonalData
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?EntryFee $Fk_EntryFee = null;
+
+    #[ORM\OneToMany(mappedBy: 'personaFisica', targetEntity: Athletes::class, cascade:["persist"], orphanRemoval: true)]
+    private $athletes;
+
+    public function __construct()
+    {
+        $this->athletes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -153,4 +163,38 @@ class PersonalData
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Athletes>
+     */
+    public function getAthletes(): Collection
+    {
+        return $this->athletes;
+    }
+
+    public function addAthletes(Athletes $athletes): self
+    {
+        if (!$this->athletes->contains($athletes)) {
+            $this->athletes[] = $athletes;
+            $athletes->setPersonalData($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAthletes(Athletes $athletes): self
+    {
+        if ($this->athletes->removeElement($athletes)) {
+            // set the owning side to null (unless already changed)
+            if ($athletes->getPersonalData() === $this) {
+                $athletes->setPersonalData(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+
 }

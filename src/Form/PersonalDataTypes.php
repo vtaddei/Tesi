@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\PersonalData;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -43,6 +44,12 @@ class PersonalDataTypes extends AbstractType
             ])
             ->add('disadvantageFlag', IntegerType::class, [
                 'required' => true
+            ])
+            ->add('athletes', CollectionType::class, [
+                'entry_type' => AthletesFormType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'required' => true,
             ])
             ->add('Salva', SubmitType::class, [
             ]);

@@ -32,13 +32,14 @@ class Athletes implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?int $TelephoneNumber = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?PersonalData $Fk_PersonalData = null;
+    #[ORM\ManyToOne(targetEntity:PersonalData::class, cascade:["persist"] , inversedBy: 'athletes')]
+    #[ORM\JoinColumn(nullable: false)]  #persist serve quando nessuna delle due entità esiste (in fase di creazione quibdi) e dice 'se salvo l'utente salvo anche l'altro a cascata
+    private ?PersonalData $PersonalData = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Roles $Fk_Roles = null;
+//    #[ORM\ManyToOne] vecchio (orm)
+//    #[ORM\JoinColumn(nullable: false)]
+//    private ?PersonalData $Fk_PersonalData = null;
+
 
     public function getId(): ?int
     {
@@ -67,24 +68,6 @@ class Athletes implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
 
     /**
      * @see PasswordAuthenticatedUserInterface
@@ -122,26 +105,33 @@ class Athletes implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getFkPersonalData(): ?PersonalData
+    public function getPersonalData(): ?PersonalData
     {
-        return $this->Fk_PersonalData;
+        return $this->PersonalData;
     }
 
-    public function setFkPersonalData(?PersonalData $Fk_PersonalData): self
+    public function setPersonalData(?PersonalData $PersonalData): self
     {
-        $this->Fk_PersonalData = $Fk_PersonalData;
+        $this->PersonalData = $PersonalData;
 
         return $this;
     }
 
-    public function getFkRoles(): ?Roles
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->Fk_Roles;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setFkRoles(?Roles $Fk_Roles): self
+    public function setRoles(?Roles $roles): self
     {
-        $this->Fk_Roles = $Fk_Roles;
+        $this->roles = $roles;
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Athletes;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -44,17 +45,9 @@ class AthletesFormType extends \Symfony\Component\Form\AbstractType
                     ]),
                 ],
             ])
-            ->add('fkRoles', IntegerType::class, [
-                'required' => true
-            ])
             ->add('telephoneNumber', IntegerType::class, [
                 'required' => true
             ])
-            ->add('fkPersonalData', IntegerType::class, [
-                'required' => true
-            ])
-            ->add('salva', SubmitType::class)
-
         ;
     }
 
