@@ -44,7 +44,7 @@ class PersonalData
     private ?EntryFee $Fk_EntryFee = null;
 
     #[ORM\OneToMany(mappedBy: 'PersonalData', targetEntity: Athletes::class, cascade:["persist"], orphanRemoval: true)]
-    private ?ArrayCollection $athletes;
+    private ?ArrayCollection $athletes; // Da cambiare in Collection
 
     public function __construct()
     {

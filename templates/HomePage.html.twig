@@ -4,8 +4,56 @@
 Gestionale
 {% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block javascripts %}
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{%  endblock %}
 
 {% block body %}
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">Associazione Sportiva Podistica Generica</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Prenotazioni</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu che scende se clicchi
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">contattaci</a>
+                            <a class="dropdown-item" href="#">opzionale 1</a>
+                            <a class="dropdown-item" href="#">opzionale 2</a>
+                        </div>
+                    </li>
+                </ul>
+                <div id = socialdiv>
+                    <a id = social href="#" class="fa fa-facebook"></a>
+                    <a id = social href="#" class="fa fa-instagram"></a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+
 <div id="divtitoloindex">
 <h3 id="titoloindex"> Benvenuto nel gestionale</h3>
 </div>
