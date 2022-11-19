@@ -31,11 +31,6 @@ th {
     display: inline-block
 }
 
-#divtitoloindex {
-    padding-left: 39%;
-}
-
-
 h3{
     background-color: skyblue;
     border: none;
@@ -79,8 +74,6 @@ h2{
     opacity: 0.7;
 }
 
-/* Set a specific color for each brand */
-
 /* Facebook */
 .fa-facebook {
     background: #3B5998;
@@ -100,4 +93,32 @@ h2{
 
 #nav-link{
     margin-left: 300px;
+}
+
+#titoloindex {
+    position: relative;
+    text-align: center;
+    background-color: skyblue;
+    padding: 10px 10px;
+    border-radius: 20px;
+    color: blue;
+    display: inline-block
+}
+
+.centerTitolo {
+    margin: auto;
+    width: 22%;
+    padding: 10px;
+}
+
+.centerBottoniHomePage {
+    margin: auto;
+    width: 10%;
+    text-align: center;
+}
+
+.centerTextHP{
+    text-align: center;
+    font-size: medium;
+    ;
 }

@@ -23,6 +23,9 @@ class MedicalCertificate
     #[ORM\Column(length: 255)]
     private ?string $Typology = null;
 
+    #[ORM\Column(type: Types::BLOB, nullable: true)]
+    private $Photo_blob = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class MedicalCertificate
     public function setTypology(string $Typology): self
     {
         $this->Typology = $Typology;
+
+        return $this;
+    }
+
+    public function getPhotoBlob()
+    {
+        return $this->Photo_blob;
+    }
+
+    public function setPhotoBlob($Photo_blob): self
+    {
+        $this->Photo_blob = $Photo_blob;
 
         return $this;
     }

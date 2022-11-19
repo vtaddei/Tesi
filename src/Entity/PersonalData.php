@@ -44,7 +44,10 @@ class PersonalData
     private ?EntryFee $Fk_EntryFee = null;
 
     #[ORM\OneToMany(mappedBy: 'PersonalData', targetEntity: Athletes::class, cascade:["persist"], orphanRemoval: true)]
-    private ?ArrayCollection $athletes; // Da cambiare in Collection
+    private ?ArrayCollection $athletes;
+
+    #[ORM\Column(length: 50000, nullable: true)]
+    private ?string $Photo_blob = null; // Da cambiare in Collection
 
     public function __construct()
     {
@@ -190,6 +193,18 @@ class PersonalData
                 $athletes->setPersonalData(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhotoBlob(): ?string
+    {
+        return $this->Photo_blob;
+    }
+
+    public function setPhotoBlob(?string $Photo_blob): self
+    {
+        $this->Photo_blob = $Photo_blob;
 
         return $this;
     }

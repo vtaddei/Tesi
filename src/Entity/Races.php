@@ -29,6 +29,18 @@ class Races
     #[ORM\Column]
     private ?int $FlagDisadvantage = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $length = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $real_length = null;
+
+    #[ORM\Column]
+    private ?bool $social_race = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $Price = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +102,54 @@ class Races
     public function setFlagDisadvantage(int $FlagDisadvantage): self
     {
         $this->FlagDisadvantage = $FlagDisadvantage;
+
+        return $this;
+    }
+
+    public function getLength(): ?string
+    {
+        return $this->length;
+    }
+
+    public function setLength(string $length): self
+    {
+        $this->length = $length;
+
+        return $this;
+    }
+
+    public function getRealLength(): ?string
+    {
+        return $this->real_length;
+    }
+
+    public function setRealLength(?string $real_length): self
+    {
+        $this->real_length = $real_length;
+
+        return $this;
+    }
+
+    public function isSocialRace(): ?bool
+    {
+        return $this->social_race;
+    }
+
+    public function setSocialRace(bool $social_race): self
+    {
+        $this->social_race = $social_race;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->Price;
+    }
+
+    public function setPrice(?string $Price): self
+    {
+        $this->Price = $Price;
 
         return $this;
     }

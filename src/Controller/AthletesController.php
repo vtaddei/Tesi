@@ -22,7 +22,7 @@ class AthletesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abst
 
         if ($form->isSubmitted() && $form->isValid()) {
             $usr->setPassword(
-                $userPasswordHasher->hashPassword(            #non è mappato infatti dal form
+                $userPasswordHasher->hashPassword(
                     $usr,
                     $form->get('password')->getData()
                 )
