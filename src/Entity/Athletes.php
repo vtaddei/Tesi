@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: AthletesRepository::class)]
+//#[ORM\Table(name: 'l_utenti')]
 class Athletes implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\PersonalData;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -30,7 +31,7 @@ class PersonalDataTypes extends AbstractType
             ->add('surname', TextType::class, [
                 'required' => true
             ])
-            ->add('birthdate', DateType::class, [
+            ->add('birthdate', BirthdayType::class, [
                 'required' => true
             ])
             ->add('birthplace', TextType::class, [
